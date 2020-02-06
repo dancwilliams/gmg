@@ -11,4 +11,4 @@ set -e
 (cd ./gmg-server && npm i)
 
 # Build Emulator
-(cd ./gmg-emulator && dotnet restore && dotnet build)
+#(cd ./gmg-emulator && dotnet restore && dotnet build)

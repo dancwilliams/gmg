@@ -1,5 +1,5 @@
 # Build Phase
-FROM node:8.9.1 as builder
+FROM node:12.4 as builder
 WORKDIR /app
 COPY ./gmg-app ./gmg-app
 COPY ./gmg-client ./gmg-client
@@ -14,7 +14,7 @@ RUN apt-get update && \
 FROM node:8.9.1 as runtime
 COPY --from=builder /app/gmg-client /app/gmg-client
 COPY --from=builder /app/gmg-server /app/gmg-server
-COPY --from=builder /app/gmg-app/build /app/gmg-server/public
+COPY --from=builder /app/gmg-app /app/gmg-app
 WORKDIR /app/gmg-server
 CMD ["npm", "run", "start:release"]
-EXPOSE 80:80
+EXPOSE 8000:80
